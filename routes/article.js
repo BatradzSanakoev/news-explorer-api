@@ -18,12 +18,20 @@ articleRouter.post('/articles', celebrate({
         throw new Error('Неверно введенный URL');
       }
       return url;
+    }),
+    image: Joi.string().required().custom((url) => {
+      if (!validator.isURL(url)) {
+        throw new Error('Неверно введенный URL');
+      }
+      return url;
     })
   })
 }), createArticle);
 
-articleRouter.delete('articles/:_id', celebrate({
+articleRouter.delete('/articles/:_id', celebrate({
   params: Joi.object().keys({
     _id: Joi.string().alphanum().length(24).hex()
   })
 }), deleteArticle);
+
+module.exports = articleRouter;

@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 const userRouter = require('express').Router();
 const { celebrate, Joi } = require('celebrate');
 
