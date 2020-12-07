@@ -34,15 +34,21 @@ module.exports.createArticle = (req, res, next) => {
 };
 
 module.exports.deleteArticle = (req, res, next) => {
-  Article.findByIdAndRemove(req.params._id).select('+owner')
+  Article.findById(req.params._id).select('+owner')
     .then((article) => {
       if (article.owner.toString() !== req.user._id) {
         throw new ForbiddenError('Вы не можете удалить чужую статью!');
       }
-      if (!article) {
-        throw new NotFoundError('Данные не найдены!');
-      }
-      res.send(article);
+    })
+    .then(() => {
+      Article.findByIdAndRemove(req.params._id)
+        .then((article) => {
+          if (!article) {
+            throw new NotFoundError('Данные не найдены!');
+          }
+          res.send(article);
+        })
+        .catch(next);
     })
     .catch(next);
 };
