@@ -17,14 +17,19 @@ const { createUser, login } = require('./controllers/user');
 const { requestLogger, errorLogger } = require('./middlewares/logger');
 const NotFoundError = require('./errors/NotFoundError');
 
-const { PORT = 3000 } = process.env;
+const { PORT = 3001 } = process.env;
 const app = express();
 const limiter = rateLimit({
   windowMs: 15 * 60 * 1000,
   max: 100
 });
 
-app.use(cors());
+const corsOptions = {
+  origin: ['http://localhost:3000', 'https://localhost:3000'],
+  credentials: true
+};
+
+app.use(cors(corsOptions));
 app.use(cookieParser());
 app.use(limiter);
 app.use(bodyParser.json());

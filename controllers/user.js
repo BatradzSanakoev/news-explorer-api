@@ -39,7 +39,7 @@ module.exports.createUser = (req, res, next) => {
       if (!newUser) {
         throw new BadRequestError('Переданы некорректные данные!');
       }
-      res.send(newUser);
+      res.send({ email: newUser.email, name: newUser.name });
     })
     .catch(next);
 };
@@ -60,4 +60,8 @@ module.exports.login = (req, res, next) => {
         .send({ message: 'Авторизация прошла успешно!' });
     })
     .catch(next);
+};
+
+module.exports.signOut = (req, res) => {
+  res.clearCookie('jwt').send();
 };
