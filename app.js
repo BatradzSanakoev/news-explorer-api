@@ -25,7 +25,7 @@ const limiter = rateLimit({
 });
 
 const corsOptions = {
-  // origin: ['http://localhost:3000', 'https://localhost:3000'],
+  origin: ['http://www.sb13diploma.students.nomoreparties.xyz/', 'https://www.sb13diploma.students.nomoreparties.xyz/'],
   credentials: true
 };
 
