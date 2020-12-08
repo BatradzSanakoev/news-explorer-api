@@ -24,17 +24,17 @@ const limiter = rateLimit({
   max: 100
 });
 
-const corsOptions = {
-  origin: [
-    // 'http://sb13diploma.students.nomoreparties.xyz',
-    'https://sb13diploma.students.nomoreparties.xyz'
-    // 'http://www.sb13diploma.students.nomoreparties.xyz',
-    // 'https://www.sb13diploma.students.nomoreparties.xyz'
-  ],
-  credentials: true
-};
+// const corsOptions = {
+//   origin: [
+//     'http://sb13diploma.students.nomoreparties.xyz',
+//     'https://sb13diploma.students.nomoreparties.xyz',
+//     'http://www.sb13diploma.students.nomoreparties.xyz',
+//     'https://www.sb13diploma.students.nomoreparties.xyz'
+//   ],
+//   credentials: true
+// };
 
-app.use(cors(corsOptions));
+app.use(cors());
 app.use(cookieParser());
 app.use(limiter);
 app.use(bodyParser.json());
