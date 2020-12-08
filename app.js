@@ -25,7 +25,12 @@ const limiter = rateLimit({
 });
 
 const corsOptions = {
-  origin: ['http://sb13diploma.students.nomoreparties.xyz', 'https://sb13diploma.students.nomoreparties.xyz'],
+  origin: [
+    'http://sb13diploma.students.nomoreparties.xyz',
+    'https://sb13diploma.students.nomoreparties.xyz',
+    'http://www.sb13diploma.students.nomoreparties.xyz',
+    'https://www.sb13diploma.students.nomoreparties.xyz'
+  ],
   credentials: true
 };
 
