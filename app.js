@@ -34,7 +34,7 @@ const limiter = rateLimit({
 //   credentials: true
 // };
 
-const allowlist = ['http://example1.com', 'http://example2.com']
+const allowlist = ['http://sb13diploma.students.nomoreparties.xyz', 'https://sb13diploma.students.nomoreparties.xyz', 'http://www.sb13diploma.students.nomoreparties.xyz', 'https://www.sb13diploma.students.nomoreparties.xyz'];
 const corsOptionsDelegate = (req, callback) => {
   let corsOptions;
   if (allowlist.indexOf(req.header('Origin')) !== -1) {
