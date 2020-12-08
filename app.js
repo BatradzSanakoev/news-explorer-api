@@ -24,28 +24,17 @@ const limiter = rateLimit({
   max: 100
 });
 
-// const corsOptions = {
-//   origin: [
-//     'http://sb13diploma.students.nomoreparties.xyz',
-//     'https://sb13diploma.students.nomoreparties.xyz',
-//     'http://www.sb13diploma.students.nomoreparties.xyz',
-//     'https://www.sb13diploma.students.nomoreparties.xyz'
-//   ],
-//   credentials: true
-// };
+const corsOptions = {
+  origin: [
+    'http://sb13diploma.students.nomoreparties.xyz',
+    'https://sb13diploma.students.nomoreparties.xyz',
+    'http://www.sb13diploma.students.nomoreparties.xyz',
+    'https://www.sb13diploma.students.nomoreparties.xyz'
+  ],
+  credentials: true
+};
 
-// const allowlist = ['http://sb13diploma.students.nomoreparties.xyz', 'https://sb13diploma.students.nomoreparties.xyz', 'http://www.sb13diploma.students.nomoreparties.xyz', 'https://www.sb13diploma.students.nomoreparties.xyz'];
-// const corsOptionsDelegate = (req, callback) => {
-//   let corsOptions;
-//   if (allowlist.indexOf(req.header('Origin')) !== -1) {
-//     corsOptions = { origin: true }; // reflect (enable) the requested origin in the CORS response
-//   } else {
-//     corsOptions = { origin: false }; // disable CORS for this request
-//   }
-//   callback(null, corsOptions); // callback expects two parameters: error and options
-// };
-
-app.use(cors());
+app.use(cors(corsOptions));
 app.use(cookieParser());
 app.use(limiter);
 app.use(bodyParser.json());
