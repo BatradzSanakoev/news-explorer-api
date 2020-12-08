@@ -25,12 +25,12 @@ const limiter = rateLimit({
 });
 
 const corsOptions = {
-  origin: ['http://www.sb13diploma.students.nomoreparties.xyz', 'https://www.sb13diploma.students.nomoreparties.xyz'],
+  origin: ['http://sb13diploma.students.nomoreparties.xyz', 'https://sb13diploma.students.nomoreparties.xyz'],
   credentials: true
 };
 
-app.use(cookieParser());
 app.use(cors(corsOptions));
+app.use(cookieParser());
 app.use(limiter);
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
